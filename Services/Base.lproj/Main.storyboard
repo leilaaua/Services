@@ -55,7 +55,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="groupNameLabel" destination="2Ro-I5-9Bf" id="jOs-I5-LlI"/>
-                                    <segue destination="uYx-Ee-uZO" kind="show" identifier="showServices" id="ckQ-1g-Kte"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -67,6 +66,7 @@
                     <navigationItem key="navigationItem" title="Группи Послуг" id="Rqe-MK-TsD"/>
                     <connections>
                         <outlet property="activityIndicator" destination="mLq-4B-uL8" id="p9T-7h-uoi"/>
+                        <segue destination="uYx-Ee-uZO" kind="show" identifier="showServices" id="QJq-bt-HGC"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MCt-I6-q7W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -89,22 +89,22 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="serviceCell" id="mYA-j4-cuq" customClass="ServicesViewCell" customModule="Services" customModuleProvider="target">
-                                <rect key="frame" x="37" y="30" width="340" height="100"/>
+                                <rect key="frame" x="37" y="30" width="340" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xee-X6-zBe">
-                                    <rect key="frame" x="0.0" y="0.0" width="340" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="340" height="73"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lWB-md-WOX">
-                                            <rect key="frame" x="20" y="19.5" width="41.5" height="61"/>
+                                            <rect key="frame" x="20" y="6" width="41.5" height="61"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRU-Wb-o43">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kRU-Wb-o43">
                                                     <rect key="frame" x="0.0" y="0.0" width="41.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCN-Bf-5fM">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uCN-Bf-5fM">
                                                     <rect key="frame" x="0.0" y="40.5" width="41.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -113,13 +113,13 @@
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktv-bT-3eM">
-                                            <rect key="frame" x="291" y="42" width="33" height="16"/>
+                                            <rect key="frame" x="291" y="28.5" width="33" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8N-Xt-pYf">
-                                            <rect key="frame" x="241.5" y="40" width="41.5" height="20.5"/>
+                                            <rect key="frame" x="241.5" y="26.5" width="41.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -131,10 +131,10 @@
                                         <constraint firstItem="ktv-bT-3eM" firstAttribute="leading" secondItem="G8N-Xt-pYf" secondAttribute="trailing" constant="8" id="6DT-Uw-kng"/>
                                         <constraint firstItem="G8N-Xt-pYf" firstAttribute="centerY" secondItem="Xee-X6-zBe" secondAttribute="centerY" id="7yj-mx-WoH"/>
                                         <constraint firstItem="G8N-Xt-pYf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lWB-md-WOX" secondAttribute="trailing" constant="8" symbolic="YES" id="9Ch-xW-4vB"/>
+                                        <constraint firstItem="lWB-md-WOX" firstAttribute="top" secondItem="Xee-X6-zBe" secondAttribute="top" constant="6" id="Ece-YH-WzH"/>
                                         <constraint firstItem="ktv-bT-3eM" firstAttribute="centerY" secondItem="Xee-X6-zBe" secondAttribute="centerY" id="PVT-lq-E2G"/>
-                                        <constraint firstItem="ktv-bT-3eM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lWB-md-WOX" secondAttribute="trailing" constant="8" symbolic="YES" id="Pho-x6-kDd"/>
                                         <constraint firstItem="lWB-md-WOX" firstAttribute="leading" secondItem="Xee-X6-zBe" secondAttribute="leading" constant="20" id="Rot-0Z-FP8"/>
-                                        <constraint firstItem="lWB-md-WOX" firstAttribute="centerY" secondItem="Xee-X6-zBe" secondAttribute="centerY" id="wSe-aD-0CG"/>
+                                        <constraint firstAttribute="bottom" secondItem="lWB-md-WOX" secondAttribute="bottom" constant="6" id="qPe-05-ej6"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <userDefinedRuntimeAttributes>
@@ -293,10 +293,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jSN-X0-BU2">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="d2A-Ag-Tad"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="d2A-Ag-Tad">
+                            <connections>
+                                <segue destination="boi-fp-4gk" kind="unwind" unwindAction="unwindWithSegue:" id="Yi1-ia-sqa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rLB-4x-fKY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="boi-fp-4gk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3683" y="59"/>
         </scene>

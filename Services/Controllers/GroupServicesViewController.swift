@@ -9,7 +9,6 @@ import UIKit
 
 class GroupServicesViewController: UICollectionViewController {
     
-    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var groupData: GroupData?
@@ -24,6 +23,9 @@ class GroupServicesViewController: UICollectionViewController {
         fetchServiceData()
     }
     
+    @IBAction func unwind(segue: UIStoryboardSegue) {
+        dismiss(animated: true)
+    }
     
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -46,19 +48,18 @@ class GroupServicesViewController: UICollectionViewController {
         guard let selectGroupId = groupData?.data[indexPath.item].id else { return }
         
         filteredServices = services.filter { $0.serviceGroupId == selectGroupId }
-        
-        print()
-        
+        performSegue(withIdentifier: "showServices", sender: filteredServices)
+    
     }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showServices" {
             guard let servicesVC = segue.destination as? ServicesViewController else { return }
-            servicesVC.services = filteredServices
+            servicesVC.services = sender as? [Service]
+            
         }
     }
-    
     
     private func fetchGroupData() {
         NetworkManager.shared.fetch(dataType: GroupData.self, from: Link.groupURL.rawValue, convertFromSnakeCase: false) { groupData in
@@ -72,7 +73,6 @@ class GroupServicesViewController: UICollectionViewController {
             }
         }
     }
-    
     
     private func fetchServiceData() {
         let pageIndex = 1

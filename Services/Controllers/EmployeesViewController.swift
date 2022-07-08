@@ -10,28 +10,39 @@ import UIKit
 class EmployeesViewController: UICollectionViewController {
     
     var employees: [Employee] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         fetchEmployeeData()
     }
-
+    
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         employees.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "employeesCell", for: indexPath) as! EmployeeViewCell
-    
-        cell.configure(with: (employees[indexPath.item]))
         
-    
+        let employee = employees[indexPath.item]
+        
+        if let url = URL(string: employee.imageUrl ?? "") {
+            cell.employyeImageView.image = nil
+            URLSession.shared.dataTask(with: url) {
+                data, response, error in
+                guard let data = data,
+                      let image = UIImage(data: data) else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    cell.configure(with: employee, image: image)
+                }
+            }.resume()
+            
+        }
+        
         return cell
     }
-    
-    
     
     private func fetchEmployeeData() {
         let pageIndex = 1
@@ -44,13 +55,14 @@ class EmployeesViewController: UICollectionViewController {
             switch employeeData {
             case .success(let employeeData):
                 self.employees += employeeData.data
-                self.collectionView.reloadData()
-                if pageIndex < employeeData.meta.pages   {
+                if pageIndex < employeeData.meta.pages  {
                     self.makeRequest(pageIndex: pageIndex + 1)
+                } else {
+                    self.collectionView.reloadData()
                 }
             case .failure(let error):
                 print(error.localizedDescription)
-
+                
             }
         }
     }
